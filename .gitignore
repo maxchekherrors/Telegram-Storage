@@ -33,3 +33,4 @@ node_modules/
 
 /config/components/database.config.js
 /api/users
+.idea
