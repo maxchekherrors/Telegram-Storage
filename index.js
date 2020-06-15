@@ -2,15 +2,11 @@
 
 const http = require('http');
 const server = require('./server');
-
+const bot = require('./api/storageBot/storageBot.model.js');
 const { port } = require('./config').server;
-
+const { webHook } = require('./config').storageBot;
 async function bootstrap() {
-  /**
-   * Add external services init as async operations (db, redis, etc...)
-   * e.g.
-   * await sequelize.authenticate()
-   */
+  await bot.setWebHook(`${webHook}`);
   return http.createServer(server.callback()).listen(port);
 }
 

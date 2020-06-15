@@ -11,7 +11,6 @@ function applyApiMiddleware(app) {
   const router = new Router({
     prefix: `/api/${apiVersion}`,
   });
-  console.log(`/api/${apiVersion}`)
   // Require all the folders and create a sub-router for each feature api
   fs.readdirSync(__dirname)
     .filter(file => file.indexOf('.') !== 0 && file !== baseName)

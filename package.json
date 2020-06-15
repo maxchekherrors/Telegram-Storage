@@ -9,7 +9,7 @@
     "format": "prettier --write \"**/*.+(js|yml|yaml|json)\"",
     "lint": "eslint .",
     "start": "node index.js",
-    "test": "NODE_ENV=test jest'"
+    "test": "jest --watchAll"
   },
   "devDependencies": {
     "eslint": "5.16.0",
@@ -22,8 +22,10 @@
     "eslint-plugin-promise": "4.1.1",
     "eslint-plugin-standard": "4.0.0",
     "husky": "2.3.0",
+    "jest": "^26.0.1",
     "nodemon": "1.19.0",
-    "prettier": "1.17.1"
+    "prettier": "1.17.1",
+    "supertest": "^4.0.2"
   },
   "dependencies": {
     "@koa/cors": "2.2.3",

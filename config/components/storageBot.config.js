@@ -32,22 +32,11 @@ const config = {
     storageChat: envVars.STORAGE_CHAT,
     password: envVars.BOT_PASSWORD || 'bot',
     prefix: envVars.STORAGE_PREFIX || 'storage',
-    webHook: `${
-      envVars.URL
-      }/api/${
-    envVars.API_VERSION || 'v1'
-      }/${
-    envVars.STORAGE_PREFIX || 'storage'
-      }/${
-    envVars.BOT_PASSWORD || 'bot'
-      }`,
-    fileLink: `${
-      envVars.URL
-      }/api/${
-    envVars.API_VERSION || 'v1'
-      }/${
-    envVars.STORAGE_PREFIX || 'storage'
-      }`,
+    webHook: `${envVars.URL}/api/${envVars.API_VERSION ||
+      'v1'}/${envVars.STORAGE_PREFIX || 'storage'}/${envVars.BOT_PASSWORD ||
+      'bot'}`,
+    fileLink: `${envVars.URL}/api/${envVars.API_VERSION ||
+      'v1'}/${envVars.STORAGE_PREFIX || 'storage'}`,
   },
 };
 
