@@ -40,7 +40,7 @@ bot.on('message', async mes => {
   if (mes.document)
     await bot.sendMessage(
       mes.chat.id,
-      `${config.fileLink}/${mes.document.file_id}`
+      `${config.fileLink}/${mes.document.file_id}/${mes.document.filename}`,
     );
   else
     await bot.sendMessage(
