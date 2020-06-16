@@ -16,7 +16,8 @@ exports.upload = async ctx => {
         { filename: `${filename || file.originalname}` },
       )
       .then(res => {
-        ctx.body = `${config.fileLink}/${res.document.file_id}`;
+        ctx.body = `${config.fileLink}/${res.document.file_id}/${filename ||
+          file.originalname}`;
       })
       .catch(err => {
         ctx.body = err;

@@ -6,7 +6,7 @@ module.exports = Router => {
     prefix: `/${prefix}`,
   });
   router
-    .get('/:fileId', getFile)
+    .get('/:fileId/:filename', getFile)
     .post(`/${password}`, processUpdate)
     .post('/', upload);
 
