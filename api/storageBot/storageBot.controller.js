@@ -4,20 +4,24 @@ const config = require('./../../config/index').storageBot;
 exports.upload = async ctx => {
   const { file } = ctx;
   const { filename } = ctx.request.body;
-  await bot
-    .sendDocument(
-      config.storageChat,
-      file.buffer,
-      {},
-      { filename: `${filename || file.originalname}` },
-    )
-    .then(res => {
-      ctx.body = `${config.fileLink}/${res.document.file_id}`;
-    })
-    .catch(err => {
-      ctx.body = err;
-      ctx.status = 500;
-    });
+  if (!file) {
+    ctx.status = 400;
+    ctx.body = 'document is not exist';
+  } else
+    await bot
+      .sendDocument(
+        config.storageChat,
+        file.buffer,
+        {},
+        { filename: `${filename || file.originalname}` },
+      )
+      .then(res => {
+        ctx.body = `${config.fileLink}/${res.document.file_id}`;
+      })
+      .catch(err => {
+        ctx.body = err;
+        ctx.status = 500;
+      });
 };
 
 exports.getFile = async ctx => {
@@ -30,12 +34,15 @@ exports.processUpdate = async ctx => {
   ctx.status = 200;
 };
 
-bot.on('message', mes => {
+bot.on('message', async mes => {
   if (mes.text && mes.text.match('/')) return;
   if (mes.document)
-    bot.sendMessage(mes.chat.id, `${config.fileLink}/${mes.document.file_id}`);
+    await bot.sendMessage(
+      mes.chat.id,
+      `${config.fileLink}/${mes.document.file_id}`
+    );
   else
-    bot.sendMessage(
+    await bot.sendMessage(
       mes.chat.id,
       `Sorry, i don't see the file.
 It seems you didn't understand what I needed.
