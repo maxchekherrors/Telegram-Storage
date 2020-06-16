@@ -36,11 +36,12 @@ exports.processUpdate = async ctx => {
 };
 
 bot.on('message', async mes => {
+  console.log(mes.document);
   if (mes.text && mes.text.match('/')) return;
   if (mes.document)
     await bot.sendMessage(
       mes.chat.id,
-      `${config.fileLink}/${mes.document.file_id}/${mes.document.filename}`,
+      `${config.fileLink}/${mes.document.file_id}/${mes.document.file_name}`,
     );
   else
     await bot.sendMessage(
